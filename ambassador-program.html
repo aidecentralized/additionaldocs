@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANDA - Ambassador & Contributor Program</title>
+    <style>
+        :root {
+            --primary-color: #A31F34; /* MIT Red */
+            --secondary-color: #8A1B29; /* Darker MIT Red */
+            --accent-color: #C2C0BF; /* MIT Silver */
+            --background-color: #f7f9fc;
+            --text-color: #333;
+            --light-gray: #f0f2f5;
+            --medium-gray: #d0d5dd;
+            --dark-gray: #667085;
+            --code-background: #f5f7f9;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card {
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            font-size: 1rem;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .button-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .button-secondary:hover {
+            background-color: var(--light-gray);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        code {
+            font-family: Monaco, Consolas, "Courier New", monospace;
+            background-color: var(--code-background);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .on-this-page h3 {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .on-this-page ul {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+        
+        .on-this-page li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            transition: color 0.2s;
+        }
+        
+        .on-this-page a:hover {
+            color: var(--primary-color);
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .ambassador-map {
+            width: 100%;
+            height: 400px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            background-image: url('https://via.placeholder.com/1200x400?text=Interactive+Ambassador+Map');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .badge-secondary {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .badge img {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .form-check {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-check-input {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .on-this-page {
+                display: none;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">NANDA <span>Networked AI Agents and Decentralized Architecture</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                    <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                    <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                    <li><a href="donations.html">Support & Donations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="two-column">
+            <div>
+                <h1>NANDA Ambassador & Contributor Program</h1>
+                <p class="subtitle">Join our global community of ambassadors and technical contributors driving the adoption of decentralized AI agent infrastructure.</p>
+
+                <div class="section">
+                    <h2>Contributor Dashboard</h2>
+                    <p>
+                        The NANDA ecosystem thrives through the contributions of our global community. Technical contributors 
+                        help improve the protocol, build tools, fix bugs, and extend functionality across the stack.
+                    </p>
+                    
+                    <h3>Recent Contribution Highlights</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">Registry Performance Optimization</div>
+                            <div class="card-subtitle">by Sarah Chen, Stanford</div>
+                            <p class="card-description">Improved query performance by 75% through database indexing enhancements and caching layer implementation.</p>
+                            <span class="card-tag">Registry</span>
+                            <span class="card-tag">Performance</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Multi-language Agent Support</div>
+                            <div class="card-subtitle">by Hiroshi Tanaka, University of Tokyo</div>
+                            <p class="card-description">Added support for 12 additional languages in agent communication protocol and metadata schema.</p>
+                            <span class="card-tag">Protocol</span>
+                            <span class="card-tag">Internationalization</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Privacy-Preserving Verification</div>
+                            <div class="card-subtitle">by Elena Müller, EPFL</div>
+                            <p class="card-description">Implemented Zero-Knowledge Proof verification mechanisms for agent credentials.</p>
+                            <span class="card-tag">Privacy</span>
+                            <span class="card-tag">Security</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Ways to Contribute</h3>
+                    <ul>
+                        <li><strong>Code Contributions:</strong> Submit pull requests to our GitHub repositories</li>
+                        <li><strong>Documentation:</strong> Improve guides, examples, and technical documentation</li>
+                        <li><strong>Testing:</strong> Help identify bugs and validate new features</li>
+                        <li><strong>Design:</strong> Contribute to UX/UI improvements and visual assets</li>
+                        <li><strong>Research:</strong> Participate in working groups on protocol research and standards development</li>
+                    </ul>
+                    
+                    <p>
+                        <a href="https://github.com/aidecentralized/nanda-servers" class="button">View GitHub Repository</a>
+                        <a href="#" class="button button-secondary">Contribution Guidelines</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Ambassador Program</h2>
+                    <p>
+                        NANDA Ambassadors are community leaders who promote the adoption of decentralized AI agent infrastructure
+                        by organizing events, creating educational resources, and building local communities.
+                    </p>
+                    
+                    <h3>Ambassador Map</h3>
+                    <div class="ambassador-map"></div>
+                    
+                    <h3>Current Ambassadors by Region</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">North America</div>
+                            <div class="card-subtitle">12 Ambassadors</div>
+                            <p>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> David Park</span>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Aisha Johnson</span>
+                                <span class="badge badge-secondary">+10 more</span>
+                            </p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Europe</div>
+                            <div class="card-subtitle">9 Ambassadors</div>
+                            <p>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Sophia Weber</span>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Marco Rossi</span>
+                                <span class="badge badge-secondary">+7 more</span>
+                            </p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Asia-Pacific</div>
+                            <div class="card-subtitle">8 Ambassadors</div>
+                            <p>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Jin-Young Kim</span>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Rajiv Patel</span>
+                                <span class="badge badge-secondary">+6 more</span>
+                            </p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Latin America</div>
+                            <div class="card-subtitle">5 Ambassadors</div>
+                            <p>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Carolina Santos</span>
+                                <span class="badge badge-primary"><img src="https://via.placeholder.com/20" alt="Profile"> Javier Torres</span>
+                                <span class="badge badge-secondary">+3 more</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        <a href="#" class="button">View All Ambassadors</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Ambassador Application</h2>
+                    <p>
+                        Interested in becoming a NANDA Ambassador? We're looking for passionate advocates who can help grow
+                        the community and promote the adoption of decentralized AI agent technology.
+                    </p>
+                    
+                    <h3>Ambassador Responsibilities</h3>
+                    <ul>
+                        <li>Organize local meetups and educational events (virtual or in-person)</li>
+                        <li>Create content such as blog posts, tutorials, or videos about NANDA</li>
+                        <li>Represent NANDA at industry events and academic conferences</li>
+                        <li>Support new community members and facilitate connections</li>
+                        <li>Provide feedback on protocol development and roadmap</li>
+                    </ul>
+                    
+                    <h3>Ambassador Benefits</h3>
+                    <ul>
+                        <li>Early access to new protocol features and research</li>
+                        <li>Dedicated mentorship from core team members</li>
+                        <li>Speaking opportunities at NANDA events</li>
+                        <li>Event support and promotional materials</li>
+                        <li>Recognition on the NANDA website and official channels</li>
+                    </ul>
+                    
+                    <h3>Application Form</h3>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location (City, Country)</label>
+                            <input type="text" id="location" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="background">Professional Background</label>
+                            <textarea id="background" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Why do you want to become a NANDA Ambassador?</label>
+                            <textarea id="motivation" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Relevant Experience (community building, technical expertise, etc.)</label>
+                            <textarea id="experience" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Areas of Interest (select all that apply)</label>
+                            <div class="form-check">
+                                <input type="checkbox" id="interest1" class="form-check-input">
+                                <label for="interest1" class="form-check-label">Technical Development</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="interest2" class="form-check-input">
+                                <label for="interest2" class="form-check-label">Education & Content Creation</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="interest3" class="form-check-input">
+                                <label for="interest3" class="form-check-label">Community Building</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="interest4" class="form-check-input">
+                                <label for="interest4" class="form-check-label">Enterprise Adoption</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="interest5" class="form-check-input">
+                                <label for="interest5" class="form-check-label">Research & Standards</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="commitment">Time Commitment (hours per month)</label>
+                            <select id="commitment" class="form-control">
+                                <option>5-10 hours</option>
+                                <option>10-20 hours</option>
+                                <option>20+ hours</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="social">Social Media Profiles (LinkedIn, Twitter, GitHub, etc.)</label>
+                            <textarea id="social" class="form-control"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="references">References (optional)</label>
+                            <textarea id="references" class="form-control"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" id="terms" class="form-check-input" required>
+                                <label for="terms" class="form-check-label">I agree to the <a href="#terms-and-conditions">Terms and Conditions</a> of the NANDA Ambassador Program</label>
+                            </div>
+                        </div>
+                        
+                        <p>
+                            <button type="submit" class="button">Submit Application</button>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="section" id="terms-and-conditions">
+                    <h2>Terms and Conditions</h2>
+                    <p>
+                        The NANDA Ambassador Program is governed by the following terms and conditions. Please read carefully
+                        before applying.
+                    </p>
+                    
+                    <h3>Term Length</h3>
+                    <p>
+                        Ambassador appointments are for a renewable 12-month term. Continued participation is contingent
+                        upon active engagement with the program and adherence to these terms.
+                    </p>
+                    
+                    <h3>Expectations</h3>
+                    <ul>
+                        <li>Organize at least one community event per quarter (online or in-person)</li>
+                        <li>Create a minimum of one piece of content about NANDA every two months</li>
+                        <li>Participate in monthly ambassador calls</li>
+                        <li>Provide regular updates on local community activities</li>
+                        <li>Adhere to the NANDA Code of Conduct in all community interactions</li>
+                        <li>Accurately represent NANDA's technology and mission</li>
+                    </ul>
+                    
+                    <h3>Responsibilities</h3>
+                    <ul>
+                        <li>Build and nurture local communities interested in decentralized AI</li>
+                        <li>Provide feedback to the core team on community needs and challenges</li>
+                        <li>Connect potential contributors and partners with the NANDA ecosystem</li>
+                        <li>Stay informed about protocol developments and roadmap</li>
+                    </ul>
+                    
+                    <h3>Benefits</h3>
+                    <ul>
+                        <li>Recognition on the NANDA website with profile and contact information</li>
+                        <li>Access to private Discord channels and ambassador resources</li>
+                        <li>Early access to new protocol features and documentation</li>
+                        <li>Exclusive ambassador swag and digital badges</li>
+                        <li>Reimbursement for approved community event expenses (subject to limits)</li>
+                        <li>Opportunity to shape the future of decentralized AI agent technologies</li>
+                    </ul>
+                    
+                    <p>
+                        <strong>Note:</strong> The NANDA Ambassador Program is a volunteer position. While we provide support and
+                        resources, ambassadors are not employees or contractors of the NANDA organization.
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="on-this-page">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#contributor-dashboard">Contributor Dashboard</a></li>
+                        <li><a href="#ambassador-program">Ambassador Program</a></li>
+                        <li><a href="#ambassador-application">Application Form</a></li>
+                        <li><a href="#terms-and-conditions">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>NANDA</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                        <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                        <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                        <li><a href="donations.html">Support & Donations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 NANDA Protocol. Licensed under MIT.
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

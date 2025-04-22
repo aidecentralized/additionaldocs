@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANDA - Networked AI Agents and Decentralized Architecture</title>
+    <style>
+        :root {
+            --primary-color: #A31F34; /* MIT Red */
+            --secondary-color: #8A1B29; /* Darker MIT Red */
+            --accent-color: #C2C0BF; /* MIT Silver */
+            --background-color: #f7f9fc;
+            --text-color: #333;
+            --light-gray: #f0f2f5;
+            --medium-gray: #d0d5dd;
+            --dark-gray: #667085;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 2.5rem 0;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .companies-image {
+            background-image: url('https://source.unsplash.com/random/600x400/?technology,server');
+        }
+        
+        .organizations-image {
+            background-image: url('https://source.unsplash.com/random/600x400/?university,technology');
+        }
+        
+        .ambassador-image {
+            background-image: url('https://source.unsplash.com/random/600x400/?community,global');
+        }
+        
+        .donations-image {
+            background-image: url('https://source.unsplash.com/random/600x400/?support,contribution');
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .card-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .card-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="header-title">NANDA</h1>
+            <p class="header-subtitle">Networked AI Agents and Decentralized Architecture</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Project Resources</h2>
+        
+        <div class="cards-container">
+            <a href="companies-deploying-mcp.html" class="card">
+                <div class="card-image companies-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Companies Deploying MCP Servers</h3>
+                    <p class="card-description">Explore organizations implementing Model Context Protocol servers, with implementation guides, directory listings, and use cases across industries.</p>
+                    <div class="card-link">View Resource</div>
+                </div>
+            </a>
+            
+            <a href="organizations-hosting-registry.html" class="card">
+                <div class="card-image organizations-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Registry Hosting Organizations</h3>
+                    <p class="card-description">Discover universities and organizations powering the NANDA registry network with setup guides, maintenance practices, and infrastructure information.</p>
+                    <div class="card-link">View Resource</div>
+                </div>
+            </a>
+            
+            <a href="ambassador-program.html" class="card">
+                <div class="card-image ambassador-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Ambassador Program</h3>
+                    <p class="card-description">Join our global community of ambassadors and technical contributors driving the adoption of decentralized AI agent infrastructure.</p>
+                    <div class="card-link">View Resource</div>
+                </div>
+            </a>
+            
+            <a href="donations.html" class="card">
+                <div class="card-image donations-image"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Support & Donations</h3>
+                    <p class="card-description">Learn how your contributions power the development of open, decentralized AI infrastructure and help create a more equitable AI ecosystem.</p>
+                    <div class="card-link">View Resource</div>
+                </div>
+            </a>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>© 2025 NANDA Protocol. Licensed under MIT.</p>
+    </footer>
+</body>
+</html> 

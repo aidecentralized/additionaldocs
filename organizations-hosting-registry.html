@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANDA - Registry Hosting Organizations</title>
+    <style>
+        :root {
+            --primary-color: #A31F34; /* MIT Red */
+            --secondary-color: #8A1B29; /* Darker MIT Red */
+            --accent-color: #C2C0BF; /* MIT Silver */
+            --background-color: #f7f9fc;
+            --text-color: #333;
+            --light-gray: #f0f2f5;
+            --medium-gray: #d0d5dd;
+            --dark-gray: #667085;
+            --code-background: #f5f7f9;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card {
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            font-size: 1rem;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .button-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .button-secondary:hover {
+            background-color: var(--light-gray);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        code {
+            font-family: Monaco, Consolas, "Courier New", monospace;
+            background-color: var(--code-background);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .on-this-page h3 {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .on-this-page ul {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+        
+        .on-this-page li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            transition: color 0.2s;
+        }
+        
+        .on-this-page a:hover {
+            color: var(--primary-color);
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .stats-box {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .cost-table {
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .cost-table th {
+            background-color: var(--light-gray);
+            padding: 1rem;
+        }
+
+        .cost-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .cost-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .on-this-page {
+                display: none;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">NANDA <span>Networked AI Agents and Decentralized Architecture</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                    <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                    <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                    <li><a href="donations.html">Support & Donations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="two-column">
+            <div>
+                <h1>Registry Hosting Organizations</h1>
+                <p class="subtitle">Meet the universities and organizations powering the decentralized NANDA registry network, providing a robust foundation for AI agent ecosystems.</p>
+
+                <div class="stats-box">
+                    <h2>Registry Network at a Glance</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Academic Hosts</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">16</div>
+                            <div class="stat-label">Industry Hosts</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">14</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5,400+</div>
+                            <div class="stat-label">Registered Agents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Participating Organizations</h2>
+                    <p>
+                        The NANDA registry network operates on a federated model, with nodes hosted by academic institutions, 
+                        research labs, and industry partners worldwide. Each hosting organization maintains sovereignty over 
+                        their registry while participating in the larger decentralized ecosystem.
+                    </p>
+                    
+                    <h3>Academic Institutions</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">MIT Media Lab</div>
+                            <div class="card-subtitle">Cambridge, USA</div>
+                            <p class="card-description">Primary development node and founding host of the NANDA protocol, specializing in protocol research and novel agent coordination frameworks.</p>
+                            <span class="card-tag">Primary Node</span>
+                            <span class="card-tag">Research</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Stanford HAI</div>
+                            <div class="card-subtitle">Stanford, USA</div>
+                            <p class="card-description">Hosting specialized registry nodes focused on human-AI interaction standards and safety validation frameworks for agentic systems.</p>
+                            <span class="card-tag">Safety Research</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">University of Tokyo</div>
+                            <div class="card-subtitle">Tokyo, Japan</div>
+                            <p class="card-description">Asia-Pacific regional registry hub with specialized focus on multi-language agent communication and cultural context preservation.</p>
+                            <span class="card-tag">Regional Hub</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">EPFL</div>
+                            <div class="card-subtitle">Lausanne, Switzerland</div>
+                            <p class="card-description">European registry node focused on privacy-preserving AI agent technologies and GDPR-compliant data exchange protocols.</p>
+                            <span class="card-tag">Privacy Focus</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Industry Partners</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">HCLTech</div>
+                            <div class="card-subtitle">Global IT Services</div>
+                            <p class="card-description">Enterprise-focused registry implementation with specific extensions for regulated industries and cross-organizational workflows.</p>
+                            <span class="card-tag">Enterprise</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Mitsubishi Electric</div>
+                            <div class="card-subtitle">Industrial Technology</div>
+                            <p class="card-description">Registry specialization for industrial and manufacturing AI agents, integrating with IoT and factory automation systems.</p>
+                            <span class="card-tag">Industrial</span>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        <a href="#" class="button">View Complete Directory</a>
+                        <a href="#" class="button button-secondary">Registry Status Dashboard</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Hosting Guide</h2>
+                    <p>
+                        Setting up and maintaining a NANDA registry node requires technical expertise and commitment to the 
+                        protocol standards. This guide provides an overview of the process and requirements.
+                    </p>
+                    
+                    <h3>Prerequisites</h3>
+                    <ul>
+                        <li><strong>Technical Expertise:</strong> Systems administration experience and familiarity with distributed systems</li>
+                        <li><strong>Infrastructure:</strong> Dedicated server or virtual machine with high availability</li>
+                        <li><strong>Bandwidth:</strong> Reliable, high-speed internet connection (100+ Mbps recommended)</li>
+                        <li><strong>Commitment:</strong> Long-term hosting availability (2+ years) to ensure ecosystem stability</li>
+                    </ul>
+                    
+                    <h3>Setup Process</h3>
+                    <ol>
+                        <li><strong>Application:</strong> Submit a hosting application with your organization's details and hosting capability</li>
+                        <li><strong>Verification:</strong> Complete the technical verification process to ensure compliance with protocol standards</li>
+                        <li><strong>Installation:</strong> Deploy the registry software using our automation tools or manual setup</li>
+                        <li><strong>Configuration:</strong> Set up your registry policies, connection parameters, and authentication systems</li>
+                        <li><strong>Integration:</strong> Connect to at least three existing registry nodes to join the federation</li>
+                        <li><strong>Certification:</strong> Complete the certification process to become an official hosting organization</li>
+                    </ol>
+                    
+                    <p>
+                        <a href="#" class="button">Detailed Setup Documentation</a>
+                        <a href="#" class="button button-secondary">Download Docker Setup</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Maintenance Guide</h2>
+                    <p>
+                        Maintaining a healthy registry node requires regular attention to updates, performance, and security.
+                    </p>
+                    
+                    <h3>Regular Maintenance Tasks</h3>
+                    <ul>
+                        <li><strong>Security Updates:</strong> Apply security patches within 72 hours of release</li>
+                        <li><strong>Protocol Updates:</strong> Implement protocol version updates during scheduled maintenance windows</li>
+                        <li><strong>Health Monitoring:</strong> Set up monitoring for node performance, availability, and response times</li>
+                        <li><strong>Backup Procedures:</strong> Maintain regular backups with 14-day retention minimum</li>
+                        <li><strong>Federation Sync:</strong> Ensure proper synchronization with other nodes in the network</li>
+                    </ul>
+                    
+                    <h3>Troubleshooting Common Issues</h3>
+                    <ul>
+                        <li><strong>Sync Failures:</strong> Check network connectivity and verify certificate validity</li>
+                        <li><strong>Performance Degradation:</strong> Monitor resource utilization and optimize database queries</li>
+                        <li><strong>Certificate Expiration:</strong> Set up alerts for approaching expirations and automate renewal</li>
+                    </ul>
+                    
+                    <p>
+                        <a href="#" class="button">Maintenance Documentation</a>
+                        <a href="#" class="button button-secondary">Join Maintainers Forum</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Infrastructure and Cost Overview</h2>
+                    <p>
+                        Hosting a NANDA registry requires specific infrastructure investments. Below is an estimate of associated costs 
+                        to help organizations plan their participation.
+                    </p>
+                    
+                    <h3>Recommended Infrastructure</h3>
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Minimum Specification</th>
+                                <th>Recommended Specification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Server</td>
+                                <td>4 CPU cores, 16GB RAM</td>
+                                <td>8+ CPU cores, 32GB+ RAM</td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td>100GB SSD</td>
+                                <td>500GB+ SSD with backup</td>
+                            </tr>
+                            <tr>
+                                <td>Bandwidth</td>
+                                <td>100 Mbps dedicated</td>
+                                <td>1 Gbps+ dedicated</td>
+                            </tr>
+                            <tr>
+                                <td>Security</td>
+                                <td>Basic firewall, TLS</td>
+                                <td>Advanced firewall, WAF, DDoS protection</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Estimated Monthly Costs</h3>
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Expense Category</th>
+                                <th>Minimum Cost</th>
+                                <th>Recommended Budget</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Infrastructure (Cloud/On-Premise)</td>
+                                <td>$200-300/month</td>
+                                <td>$500-800/month</td>
+                            </tr>
+                            <tr>
+                                <td>Bandwidth/Data Transfer</td>
+                                <td>$50-100/month</td>
+                                <td>$150-300/month</td>
+                            </tr>
+                            <tr>
+                                <td>Personnel (Partial FTE)</td>
+                                <td>~10 hours/month</td>
+                                <td>20+ hours/month</td>
+                            </tr>
+                            <tr>
+                                <td>Backup & Disaster Recovery</td>
+                                <td>$50/month</td>
+                                <td>$100-200/month</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>Note:</strong> Academic institutions may qualify for infrastructure grants to offset hosting costs. 
+                        Please contact our <a href="#">academic partnerships team</a> for details.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Support Resources</h2>
+                    <p>
+                        We provide several support options for registry hosting organizations:
+                    </p>
+                    
+                    <ul>
+                        <li><strong>Technical Documentation:</strong> Comprehensive guides covering all aspects of registry deployment and maintenance</li>
+                        <li><strong>Maintainers Forum:</strong> Private community for registry operators to share best practices and troubleshooting</li>
+                        <li><strong>Emergency Support:</strong> Priority channels for critical issues affecting registry availability</li>
+                        <li><strong>Training Webinars:</strong> Regular sessions on advanced registry management topics</li>
+                    </ul>
+                    
+                    <h3>Book a Support Call</h3>
+                    <p>
+                        Current and prospective hosting organizations can schedule a technical consultation with our registry specialists.
+                    </p>
+                    
+                    <p>
+                        <a href="#" class="button">Schedule Consultation</a>
+                        <a href="#" class="button button-secondary">Email Support Team</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="on-this-page">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#participating-organizations">Participating Organizations</a></li>
+                        <li><a href="#hosting-guide">Hosting Guide</a></li>
+                        <li><a href="#maintenance-guide">Maintenance Guide</a></li>
+                        <li><a href="#infrastructure-and-cost-overview">Infrastructure & Costs</a></li>
+                        <li><a href="#support-resources">Support Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>NANDA</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                        <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                        <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                        <li><a href="donations.html">Support & Donations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 NANDA Protocol. Licensed under MIT.
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

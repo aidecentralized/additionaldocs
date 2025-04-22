@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANDA - Companies Deploying MCP Servers</title>
+    <style>
+        :root {
+            --primary-color: #A31F34; /* MIT Red */
+            --secondary-color: #8A1B29; /* Darker MIT Red */
+            --accent-color: #C2C0BF; /* MIT Silver */
+            --background-color: #f7f9fc;
+            --text-color: #333;
+            --light-gray: #f0f2f5;
+            --medium-gray: #d0d5dd;
+            --dark-gray: #667085;
+            --code-background: #f5f7f9;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card {
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .card-description {
+            font-size: 1rem;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .button-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .button-secondary:hover {
+            background-color: var(--light-gray);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        code {
+            font-family: Monaco, Consolas, "Courier New", monospace;
+            background-color: var(--code-background);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page {
+            position: sticky;
+            top: 120px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .on-this-page h3 {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .on-this-page ul {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+        
+        .on-this-page li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .on-this-page a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            transition: color 0.2s;
+        }
+        
+        .on-this-page a:hover {
+            color: var(--primary-color);
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .on-this-page {
+                display: none;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            
+            nav li {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">NANDA <span>Networked AI Agents and Decentralized Architecture</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                    <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                    <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                    <li><a href="donations.html">Support & Donations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="two-column">
+            <div>
+                <h1>Companies Deploying MCP Servers</h1>
+                <p class="subtitle">Explore organizations at the forefront of Model Context Protocol implementation, driving the decentralized AI ecosystem forward.</p>
+
+                <div class="section">
+                    <h2>Guide on Building, Testing, and Connecting MCP Servers</h2>
+                    <p>
+                        The Model Context Protocol (MCP) enables agents to interact with tools and data sources in a standardized way. 
+                        Deploying an MCP server allows your organization to become part of the expanding NANDA ecosystem while maintaining 
+                        sovereignty over your data and services.
+                    </p>
+                    
+                    <h3>Key Implementation Steps</h3>
+                    <ol>
+                        <li><strong>Setup Requirements:</strong> Server with minimum 4 CPU cores, 16GB RAM, Ubuntu 20.04+</li>
+                        <li><strong>Installation:</strong> Follow the <a href="#">detailed guide</a> or use our Docker container</li>
+                        <li><strong>Configuration:</strong> Set identity parameters, security keys, and connection endpoints</li>
+                        <li><strong>Testing:</strong> Validate your deployment with our certification test suite</li>
+                        <li><strong>Registration:</strong> Connect to a NANDA registry to become discoverable</li>
+                    </ol>
+                    
+                    <p>
+                        <a href="#" class="button">Complete Implementation Guide</a>
+                        <a href="#" class="button button-secondary">Download Docker Setup</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Directory of Companies in the Registry</h2>
+                    <p>
+                        These organizations have deployed production-ready MCP servers that are integrated with the NANDA registry ecosystem.
+                        Each implements the core protocol specifications while offering specialized capabilities.
+                    </p>
+                    
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">HCLTech</div>
+                            <div class="card-subtitle">Enterprise Solutions Provider</div>
+                            <p class="card-description">Deployed global-scale MCP servers focusing on enterprise workflows and cross-organizational automation.</p>
+                            <span class="card-tag">Finance</span>
+                            <span class="card-tag">Healthcare</span>
+                            <span class="card-tag">Enterprise</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Mitsubishi Electric</div>
+                            <div class="card-subtitle">Industrial Technology Leader</div>
+                            <p class="card-description">MCP implementation specialized for manufacturing processes, industrial automation, and edge AI deployment.</p>
+                            <span class="card-tag">Manufacturing</span>
+                            <span class="card-tag">Industrial</span>
+                            <span class="card-tag">IoT</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">AI Decentralized</div>
+                            <div class="card-subtitle">Protocol Research Lab</div>
+                            <p class="card-description">Reference implementation of MCP servers with research-focused extensions for novel agent architectures.</p>
+                            <span class="card-tag">Research</span>
+                            <span class="card-tag">Open Source</span>
+                            <span class="card-tag">Education</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-title">Synergetics</div>
+                            <div class="card-subtitle">Systems Integration Firm</div>
+                            <p class="card-description">MCP implementations focused on data privacy and secure multi-agent workflows across regulatory boundaries.</p>
+                            <span class="card-tag">Privacy</span>
+                            <span class="card-tag">Security</span>
+                            <span class="card-tag">Compliance</span>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        <a href="#" class="button">Full Registry Directory</a>
+                        <a href="#" class="button button-secondary">Apply to Join</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Use Cases Across Industries</h2>
+                    <p>
+                        MCP servers power diverse applications across sectors, demonstrating the versatility and impact of decentralized agent infrastructure.
+                    </p>
+                    
+                    <h3>Finance & Banking</h3>
+                    <ul>
+                        <li><strong>Fraud Detection Networks:</strong> Cross-institution agent collaboration for identifying suspicious patterns without centralizing sensitive data</li>
+                        <li><strong>Regulatory Compliance:</strong> Agents verifying transactions against multiple jurisdictional requirements while preserving data sovereignty</li>
+                    </ul>
+                    
+                    <h3>Healthcare</h3>
+                    <ul>
+                        <li><strong>Distributed Diagnostics:</strong> Coordinated analysis from specialized medical agents while preserving patient privacy</li>
+                        <li><strong>Research Collaboration:</strong> Secure agent-mediated sharing of insights across institutions without exposing raw data</li>
+                    </ul>
+                    
+                    <h3>Retail & E-Commerce</h3>
+                    <ul>
+                        <li><strong>Decentralized Marketplaces:</strong> Direct vendor-to-customer agent negotiations without platform intermediaries</li>
+                        <li><strong>Supply Chain Visibility:</strong> Tracking products across organizational boundaries with verifiable provenance</li>
+                    </ul>
+                    
+                    <h3>Manufacturing</h3>
+                    <ul>
+                        <li><strong>Production Optimization:</strong> Cross-domain agent collaboration for resource planning and efficiency improvements</li>
+                        <li><strong>Quality Control:</strong> Distributed inspection and verification systems with traceable decision paths</li>
+                    </ul>
+                    
+                    <p>
+                        <a href="#" class="button">Explore Case Studies</a>
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Support</h2>
+                    <p>
+                        Our team provides comprehensive support for organizations deploying MCP servers.
+                    </p>
+                    
+                    <h3>Contact Options</h3>
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:mcpsupport@aidecentralized.org">mcpsupport@aidecentralized.org</a></li>
+                        <li><strong>GitHub Issues:</strong> <a href="https://github.com/aidecentralized/nanda-servers/issues">Submit technical issues</a></li>
+                        <li><strong>Discord:</strong> <a href="#">Join our developer community</a></li>
+                    </ul>
+                    
+                    <p>
+                        <a href="#" class="button">Book Support Call</a>
+                        <a href="#" class="button button-secondary">Join Discord</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="on-this-page">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#guide-on-building-testing-and-connecting-mcp-servers">Implementation Guide</a></li>
+                        <li><a href="#directory-of-companies-in-the-registry">Company Directory</a></li>
+                        <li><a href="#use-cases-across-industries">Industry Use Cases</a></li>
+                        <li><a href="#technical-support">Technical Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>NANDA</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies-deploying-mcp.html">MCP Servers</a></li>
+                        <li><a href="organizations-hosting-registry.html">Registry Hosts</a></li>
+                        <li><a href="ambassador-program.html">Ambassador Program</a></li>
+                        <li><a href="donations.html">Support & Donations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Examples</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 NANDA Protocol. Licensed under MIT.
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
